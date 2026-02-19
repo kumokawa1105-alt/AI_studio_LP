@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIについて無料で教えます！</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #fff;
+    color: #222;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+
+  /* ======= HERO ======= */
+  .hero {
+    text-align: center;
+    padding: 48px 24px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .hero-title {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    color: #111;
+    line-height: 1.3;
+    margin-bottom: 0;
+  }
+  @media (max-width: 600px) {
+    .hero-title { font-size: 22px; }
+  }
+
+  /* ======= PROBLEMS ======= */
+  .problems {
+    background: #f7f7f7;
+    padding: 48px 24px;
+  }
+  .problems-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .problem-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 16px;
+    color: #333;
+  }
+  .problem-item:first-child { border-top: 1px solid #e8e8e8; }
+  .check {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    background: #111;
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 3px;
+  }
+
+  /* ======= RECOMMEND ======= */
+  .recommend {
+    text-align: center;
+    padding: 56px 24px 56px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #222;
+    line-height: 2;
+  }
+
+  .recommend-top { padding-top: 24px; }
+  .cta-section {
+    background: #111;
+    text-align: center;
+    padding: 56px 24px;
+  }
+  .cta-section p {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: #111;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 18px 56px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .cta-btn:hover { background: #f0f0f0; transform: translateY(-2px); }
+
+  /* ======= SECTIONS COMMON ======= */
+  .section {
+    padding: 64px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #111;
+    text-align: center;
+  }
+
+  /* ======= CLIENTS ======= */
+  .clients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 48px;
+  }
+  .client {
+    padding: 8px 20px;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .subsection-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  /* ======= SEMINAR ======= */
+  .seminar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .seminar-item {
+    padding: 6px 0;
+    font-size: 15px;
+    color: #333;
+    text-align: left;
+  }
+
+  /* ======= VOICES ======= */
+  .voices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 700px) { .voices-grid { grid-template-columns: 1fr; } }
+  .voice-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 28px;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .voice-text {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.8;
+    flex: 1;
+  }
+  .voice-author {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  /* ======= FORM ======= */
+  .form-section {
+    background: #f7f7f7;
+    padding: 64px 24px;
+  }
+  .form-section-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .form-embed {
+    background: #fff;
+    border-radius: 8px;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+  }
+  .form-iframe-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+  .form-iframe-wrapper iframe {
+    width: 100%;
+    min-width: 100%;
+    height: 2542px;
+    display: block;
+    border: none;
+  }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    color: #222;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: #111; }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-note {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 24px;
+  }
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: #333; }
+
+  .form-description {
+    text-align: center;
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 32px;
+  }
+
+  /* ======= ARTICLES ======= */
+  .articles-list { display: flex; flex-direction: column; }
+  .article-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
+    color: inherit;
+  }
+  .article-item:first-child { border-top: 1px solid #eee; }
+  .article-badge {
+    background: #111;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .article-text {
+    font-size: 15px;
+    color: #222;
+    line-height: 1.5;
+  }
+  .article-arrow { margin-left: auto; color: #aaa; font-size: 20px; }
+
+  /* ======= FOOTER ======= */
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    font-size: 13px;
+    color: #aaa;
+    border-top: 1px solid #eee;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 class="hero-title">AIについて無料で教えます！</h1>
+</div>
+
+<!-- RECOMMEND -->
+<div class="recommend recommend-top">
+  こんな方におすすめです。
+</div>
+
+<!-- PROBLEMS -->
+<div class="problems">
+  <div class="problems-inner">
+    <div class="problem-item"><span class="check"></span>AIについて教えてほしい</div>
+    <div class="problem-item"><span class="check"></span>社内にAIに詳しい人がいない</div>
+    <div class="problem-item"><span class="check"></span>AIを使わないと取り残される気がする</div>
+    <div class="problem-item"><span class="check"></span>AIって結局、うちの会社で何に使えるの？</div>
+    <div class="problem-item"><span class="check"></span>AIで業務時間を削減できるのか知りたい</div>
+    <div class="problem-item"><span class="check"></span>AIで売上を伸ばせるのか知りたい</div>
+</div>
+</div>
+
+<!-- RECOMMEND BOTTOM -->
+<div class="recommend">
+  そんな方におすすめです。<br>
+  AIについて無料でご相談に乗ります。
+</div>
+
+<div class="cta-section">
+  <p>まずは無料でご相談ください</p>
+  <a href="#form" class="cta-btn">無料で相談する →</a>
+</div>
+
+<!-- 導入実績 -->
+<div class="section">
+  <h2 class="section-title">導入実績</h2>
+  <div class="clients">
+    <span class="client">株式会社エースホーム</span>
+    <span class="client">AKATSUKI株式会社</span>
+    <span class="client">福代工務店</span>
+    <span class="client">株式会社フラワーズ</span>
+    <span class="client">あすか創建株式会社</span>
+  </div>
+
+  <h3 class="subsection-title">セミナー・スクール実績</h3>
+  <div class="seminar-list">
+    <div class="seminar-item">・株式会社RN様主催　工務店向けAIセミナー登壇</div>
+    <div class="seminar-item">・アダプトソリューションズ合同会社様主催　AI研修登壇</div>
+    <div class="seminar-item">・AIスクール「Eレジデンス」講師</div>
+  </div>
+</div>
+
+<!-- お客様の声 -->
+<div class="section" style="padding-top: 0;">
+  <h2 class="section-title">お客様の声</h2>
+  <div class="voices-grid">
+    <div class="voice-card">
+      <p class="voice-author">株式会社RN 様</p>
+      <p class="voice-text">Facebook記事1万いいね！いったよー、カイトさんのおかげです。ありがとう！ちなみに、芸能人などでなければ1万いいねは、10万回に一回の確率だそうです。</p>
+    </div>
+    <div class="voice-card">
+      <p class="voice-author">飲食店（蕎麦DAYS 様）</p>
+      <p class="voice-text">凄いです！たった2行入れただけで600字、瞬時に出力してくれました。内容も9割以上直し不要です。10分かからず600字の投稿って今まで私からすれば超スピード化です！出力スピードが半端なく早いです。</p>
+    </div>
+    <div class="voice-card">
+      <p class="voice-author">株式会社iROOM 様</p>
+      <p class="voice-text">以前は生徒からの質問返信に、毎日1〜2時間取られていました。チャットボットを導入してからは基本的な問い合わせはほぼ自動対応。24時間365日対応なので、浮いた時間を授業の質向上やカリキュラム改善に使えるようになり、生徒の満足度にもじわじわ影響が出てきています。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 申し込み方法 -->
+<div class="form-section" id="form">
+  <div class="form-section-inner">
+    <h2 class="section-title">申し込み方法</h2>
+    <p class="form-description">以下のフォームからお気軽にお申し込みください。送信後、担当者よりご連絡いたします。</p>
+    <div class="form-embed">
+      <div class="form-iframe-wrapper">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSda2YUzOo7FP-BvwgRs9D8ccnxTp-Czh7hTFjZObeIvSUGMeg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AIについて詳しく知りたい方へ -->
+<div class="section">
+  <h2 class="section-title">AIについて詳しく知りたい方へ</h2>
+  <div class="articles-list">
+    <a href="https://kumokawa1105-alt.github.io/AI_studio/" target="_blank" class="article-item">
+      <span class="article-badge">3分で読める</span>
+      <span class="article-text">年間480時間の無駄をゼロに！？AI導入で「本当にやりたい仕事」に集中する方法</span>
+      <span class="article-arrow">›</span>
+    </a>
+  </div>
+</div>
+
+<footer>© 2026 All rights reserved.</footer>
+
+</body>
+</html>
